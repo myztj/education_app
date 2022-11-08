@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#345DC2",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "search-input": "/components/search-input/search-input"
+  }
+}

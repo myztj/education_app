@@ -3,15 +3,109 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarBackgroundColor": "#345DC2",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"titleNView": {
+						"searchInput": {
+							"placeholder": "请输入你要查询的内容",
+							"align": "center",
+							"disabled": true,
+							"backgroundColor": "#F0F1F2",
+							"placeholderColor": "#979C9D",
+							"borderRadius": "30rpx"
+						}
+						//#ifdef APP-PLUS
+						,
+						"buttons": [
+							{
+								"fontSize": "26",
+								"fontSrc": "/static/icon/iconfont.ttf",
+								"text": "\ue689",
+								"float": "right"
+							}
+						]
+						//#endif
+					}
+				}
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/classify/classify",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "分类",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/read/read",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "阅读",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/asking/asking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "问答",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/my",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"list": [
+			{
+				"text": "首页",
+				"pagePath": "pages/index/index",
+				"iconPath": "/static/tab/index.png",
+				"selectedIconPath": "/static/tab/index-active.png"
+			},
+			{
+				"text": "分类",
+				"pagePath": "pages/classify/classify",
+				"iconPath": "/static/tab/category.png",
+				"selectedIconPath": "static/tab/category-active.png"
+			},
+			{
+				"text": "阅读",
+				"pagePath": "pages/read/read",
+				"iconPath": "static/tab/article.png",
+				"selectedIconPath": "static/tab/article-active.png"
+			},
+			{
+				"text": "问答",
+				"pagePath": "pages/asking/asking",
+				"iconPath": "static/tab/question.png",
+				"selectedIconPath": "static/tab/question-active.png"
+			},
+			{
+				"text": "我的",
+				"pagePath": "pages/my/my",
+				"iconPath": "static/tab/my.png",
+				"selectedIconPath": "static/tab/my-active.png"
+			}
+		]
 	},
 	"uniIdRouter": {}
 }
