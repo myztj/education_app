@@ -1,6 +1,6 @@
 <template>
 	<view class="search-box">
-		<input class="search-input" type="text" placeholder="搜索你想要的内容">
+		<input class="search-input" @click="navTo('/pages/search/search')" disabled type="text" placeholder="搜索你想要的内容">
 	</view>
 </template>
 

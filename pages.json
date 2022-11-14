@@ -7,6 +7,7 @@
 				"navigationBarTextStyle": "white",
 				"app-plus": {
 					"titleNView": {
+						"type": "transparent",
 						"searchInput": {
 							"placeholder": "请输入你要查询的内容",
 							"align": "center",
@@ -22,7 +23,8 @@
 								"fontSize": "26",
 								"fontSrc": "/static/icon/iconfont.ttf",
 								"text": "\ue689",
-								"float": "right"
+								"float": "right",
+								"background": "rgba(0,0,0,0)" //按钮背景色，"type":
 							}
 						]
 						//#endif
@@ -35,7 +37,19 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "分类",
-                "enablePullDownRefresh": false
+                "navigationBarBackgroundColor": "#0498fd",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"fontSrc": "/static/icon/iconfont.ttf",
+								"text": "\ue608",
+								"fontSize": "18"
+							}
+						]
+					}
+				}
             }
             
         }
@@ -63,6 +77,42 @@
             {
                 "navigationBarTitleText": "我的",
                 "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/public/web-view",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "扫码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "搜索",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"backgroundColor": "#fff",
+						"searchInput": {
+							"align": "left",
+							"backgroundColor": "#eee",
+							"placeholder": "请输入你想要的内容",
+							"borderRadius": "30rpx"
+						},
+						"buttons": [
+							{
+								"text": "取消",
+								"float": "right",
+								"fontSize": "32rpx"
+							}
+						]
+					}
+				}
             }
             
         }

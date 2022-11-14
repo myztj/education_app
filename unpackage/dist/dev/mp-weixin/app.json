@@ -4,7 +4,9 @@
     "pages/classify/classify",
     "pages/read/read",
     "pages/asking/asking",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/public/web-view",
+    "pages/search/search"
   ],
   "subPackages": [],
   "window": {

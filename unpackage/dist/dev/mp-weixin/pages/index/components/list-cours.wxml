@@ -1,0 +1,1 @@
+<list-box vue-id="296fcd78-1" name="{{name}}" word="{{word}}" bind:__l="__l" vue-slots="{{['default']}}"><block wx:for="{{courseData}}" wx:for-item="item" wx:for-index="index" wx:key="index"><list-item vue-id="{{('296fcd78-2-'+index)+','+('296fcd78-1')}}" item="{{item}}" bind:__l="__l"></list-item></block></list-box>

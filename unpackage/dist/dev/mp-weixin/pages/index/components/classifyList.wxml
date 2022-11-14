@@ -1,0 +1,1 @@
+<view class="calssify-box"><block wx:for="{{$root.l0}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><view class="calssify-item">{{item.name}}</view></block><view data-event-opts="{{[['tap',[['goToclassifyPage',['$event']]]]]}}" class="calssify-item" bindtap="__e">全部分类</view></view>

@@ -1,1 +1,1 @@
-<view class="search-box"><input class="search-input" type="text" placeholder="搜索你想要的内容"/></view>
+<view class="search-box"><input class="search-input" disabled="{{true}}" type="text" placeholder="搜索你想要的内容" data-event-opts="{{[['tap',[['navTo',['/pages/search/search']]]]]}}" bindtap="__e"/></view>

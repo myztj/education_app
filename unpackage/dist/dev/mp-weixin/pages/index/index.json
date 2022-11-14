@@ -2,6 +2,12 @@
   "navigationBarBackgroundColor": "#345DC2",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "search-input": "/components/search-input/search-input"
+    "search-input": "/components/search-input/search-input",
+    "mescroll-body": "/uni_modules/mescroll-uni/components/mescroll-body/mescroll-body",
+    "mxg-banner": "/components/mxg-banner/mxg-banner",
+    "class-ify": "/pages/index/components/classifyList",
+    "swiper-main": "/pages/index/components/swiper-main",
+    "scroll-cours": "/pages/index/components/scroll-cours",
+    "list-cours": "/pages/index/components/list-cours"
   }
 }
