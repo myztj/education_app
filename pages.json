@@ -115,7 +115,29 @@
 				}
             }
             
-        }
+        },
+		{
+			"path": "pages/course/course-details",
+			"navigationBarBackgroundColor": "#345DC2",
+			"navigationBarTextStyle": "white",
+			"style": {
+				"app-plus": {
+					"bounce": "none",
+					"scrollIndicator": "none",
+					"titleNView": {
+						"type": "transparent"
+						// #ifdef APP-PLUS
+						,"buttons": [
+							{
+								"type": "share",
+								"float": "right"
+							}
+						]
+						//#endif
+					}
+				}
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

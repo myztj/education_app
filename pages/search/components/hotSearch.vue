@@ -54,6 +54,9 @@
 </script>
 
 <style lang="scss">
+	.search_box{
+		margin: 0 40rpx;
+	}
 	.search_hotSearch{
 		.hotSearch_title{
 			margin: 20rpx 0;

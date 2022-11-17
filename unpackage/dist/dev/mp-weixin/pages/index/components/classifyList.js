@@ -19,6 +19,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   var l0 = _vm.classifyList.slice(0, 7)
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+
+      var _temp, _temp2
+
+      return _vm.goToSearch(item)
+    }
+  }
+
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -114,9 +127,22 @@ var _default2 =
 
 
 
+  data: function data() {
+    return {};
+
+
+  },
   methods: {
     goToclassifyPage: function goToclassifyPage() {
       console.log('跳转分类页');
+      uni.switchTab({
+        url: "/pages/classify/classify" });
+
+    },
+    goToSearch: function goToSearch(item) {
+      var indexs = this.classifyList.findIndex(function (v) {return v.name == item.name;});
+      console.log(indexs);
+      uni.setStorageSync("indexs", indexs);
       uni.switchTab({
         url: "/pages/classify/classify" });
 

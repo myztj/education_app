@@ -132,7 +132,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));
 
 
 
@@ -184,7 +184,20 @@ var _indexApi = _interopRequireDefault(__webpack_require__(/*! @/api/indexApi.js
   },
   onLoad: function onLoad() {
     this.getClassifyList();
+  },
+  onShow: function onShow() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var indexs;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.prev = 0;_context2.next = 3;return (
+
+                _this2.getClassifyList());case 3:
+              indexs = uni.getStorageSync("indexs");_context2.next = 6;return (
+                _this2.changeItem(indexs));case 6:
+              uni.setStorageSync("indexs", 0);_context2.next = 12;break;case 9:_context2.prev = 9;_context2.t0 = _context2["catch"](0);
+
+              //TODO handle the exception""
+              console.log("err=>>", _context2.t0);case 12:case "end":return _context2.stop();}}}, _callee2, null, [[0, 9]]);}))();
+
+
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

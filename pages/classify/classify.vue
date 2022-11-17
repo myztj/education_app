@@ -1,11 +1,11 @@
 <template>
 	<view class="box">
 		<scroll-view scroll-y="true" class="classify_left">
-			<view v-for="(item,index) in classifyList" @click="changeItem(index)" :class="{active:indexActive==index}" class="left_item" :key="index">{{item.name}}</view>
+			<view v-for="(item,index) in classifyList" @click="changeItem(index,item)" :class="{active:indexActive==index}" class="left_item" :key="index">{{item.name}}</view>
 		</scroll-view>
 		<scroll-view scroll-y="true" class="classify_rigth">
 			<view class="right_item">
-					<view @click="handelTosearch(item)" v-for="(item,index) in classifyListItem" :key="index">{{item.name}}</view>
+					<view @click.stop="handelTosearch(item)" v-for="(item,index) in classifyListItem" :key="index">{{item.name}}</view>
 			</view>
 		</scroll-view>
 	</view>
@@ -14,6 +14,12 @@
 <script>
 	import indexApi from '@/api/indexApi.js'
 	export default {
+		props:{
+		expression:{
+			type:Boolean,
+			default:false
+		}	
+		},
 		data() {
 			return {
 				classifyList:[],
@@ -27,17 +33,29 @@
 				 let {data} = await indexApi.getNavListApi()
 				 this.classifyList= data
 				 this.classifyListItem = this.classifyList[this.indexActive].labelList
-				 console.log(data);
+				 if(this.expression){
+					 this.classifyList.forEach((item)=> {
+						// id 标签id, name用于在标签列表中显示，cname分类名称用于在标题中显示，categoryId分类id用于作为条件查询
+						item.labelList.unshift( 
+							{ id: null, name: '不限', cname: item.name, categoryId: item.id} 
+						)
+					})
+					
+					// 向分类列表中第1个元素添加`全部分类`
+					this.classifyList.unshift( {id: null, name: '全部分类'} )
+				 }
 				}catch(e){
 					console.log("err=>>",e);
 				}
 			},
-			changeItem(index){
+			changeItem(index,item){
+				this.$emit('changeItem',item)
 				this.indexActive=index
 				this.classifyListItem = this.classifyList[index].labelList
 			},
 			handelTosearch(item){
-				console.log(item);
+				// console.log(item);
+				this.$emit('handelTosearch',item)
 				this.navTo(`/pages/search/search?labelId=${item.id}&labelName=${item.name}&activeIndex=${this.indexActive}`)
 			}
 		},
@@ -48,8 +66,20 @@
 			}
 			// e的返回格式为json对象：{"text":"测试","index":0}
 		},
-		onLoad() {
+		mounted() {
 			this.getClassifyList()
+		},
+		async onShow() {
+		  try{
+		  	await this.getClassifyList()
+		  	let indexs = uni.getStorageSync("indexs")
+			await this.changeItem(indexs)
+			uni.setStorageSync("indexs",0)
+		  }catch(e){
+		  	//TODO handle the exception""
+			console.log("err=>>",e);
+		  }
+			// this.changeItem(indexs)
 		}
 	}
 </script>

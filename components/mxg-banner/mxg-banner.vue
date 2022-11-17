@@ -3,7 +3,7 @@
 		<view class="banner-bg">
 			<swiper :indicator-dots="true" indicator-active-color="#fff" indicator-color="rgba(255,255,255,0.3)" :autoplay="true" circular current="current" @change="imageChange" :interval="3000" :duration="1000">
 				<swiper-item class="swiper-item" v-for="item in bannerList" :key="item.id">
-					<image :src="item.imageUrl"></image>
+					<image @click="navTo(`${item.advertUrl}`)" :src="item.imageUrl"></image>
 				</swiper-item>
 			</swiper>
 		</view>

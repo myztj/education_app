@@ -1,6 +1,6 @@
 <template>
 	<view class="calssify-box">
-		<view class="calssify-item" v-for="item in classifyList.slice(0,7)" :key="item.id">{{item.name}}</view>
+		<view class="calssify-item" @click="goToSearch(item)" v-for="item in classifyList.slice(0,7)" :key="item.id">{{item.name}}</view>
 		<view class="calssify-item" @click="goToclassifyPage">
 			全部分类
 		</view>
@@ -52,9 +52,22 @@ export default {
 			]
 		}
 	},
+	data(){
+		return{
+			
+		}
+	},
 	methods:{
 		goToclassifyPage(){
 			console.log('跳转分类页');
+			uni.switchTab({
+				url:"/pages/classify/classify"
+			})
+		},
+		goToSearch(item){
+			let indexs = this.classifyList.findIndex(v=>v.name==item.name)
+			console.log(indexs);
+			uni.setStorageSync("indexs",indexs)
 			uni.switchTab({
 				url:"/pages/classify/classify"
 			})

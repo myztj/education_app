@@ -100,7 +100,6 @@ export default {
 		},
 
 		async getPayCouresList(page) {
-			console.log(page, 'page');
 			//付费精品
 			let res = await this.getCourseList({ current: page.num, size: page.size, isFree: 0 });
 			const currentList = res.records;
