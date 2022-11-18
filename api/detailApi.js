@@ -7,6 +7,13 @@ const getDetailUrlsApi = ()=>{
 	})
 }
 
+const getSectionListApi = (id=10)=>{
+	return request({
+		url:'/course/api/chapter/section/list/'+id,
+		method:"GET"
+	})
+}
+
 const getCommentListApi = ()=>{
 	return request({
 		url:'/course/api/comment/list/null',
@@ -21,8 +28,17 @@ const getGroupListApi = ()=>{
 	})
 }
 
+const getCourseIsBuyApi = (id=10)=>{
+	return request({
+		url:`/course/course/is-buy/${id}`,
+		method:'GET'
+	})
+}
+
 export default {
 	getDetailUrlsApi,
 	getCommentListApi,
-	getGroupListApi
+	getGroupListApi,
+	getSectionListApi,
+	getCourseIsBuyApi
 }

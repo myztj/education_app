@@ -12,21 +12,25 @@
 					<scroll-view @scrolltoupper="scrolltoupper" upper-threshold="0" class="scroll-view" :scroll-y="enableScroll">
 						<view class="list_info">
 							<course-info v-if="index==0"></course-info>
-							<course-section v-if="index==1"></course-section>
+							<course-section @handelArticle="handelArticle" :chapterList="chapterList" v-if="index==1"></course-section>
 							<course-comment v-if="index==2"></course-comment>
-							<course-setmeal v-if="index==3"></course-setmeal>
+							<course-setmeal :groupList="GroupList" v-if="index==3"></course-setmeal>
 						</view>
 					</scroll-view>
 				</swiper-item>
 			</swiper>
 		</view>
-		<view class="purchase">
-			立即购买
-		</view>
+         <button-tbs @changeBtn="changeBtn" :name="isBuy || courseDetail.isFree?'立即觀看':'立即购买'"></button-tbs>
+		 <view class="mask" v-if="isWatch">
+		 	<view class="text" @click="isWatch=false">
+		 		我是测试文字
+		 	</view>
+		 </view>w
 	</view>
 </template>
 
 <script>
+	import detailApi from "@/api/detailApi.js"
 	import courseComment from "@/pages/course/components/course-comment.vue"
 	import courseInfo from "@/pages/course/components/course-info.vue"
 	import courseSection from "@/pages/course/components/course-section.vue"
@@ -48,7 +52,12 @@ export default {
 			pageHeight: 300,
 			statuNavHeight: 0, //狀態欄加導航欄的高度
 			enableScroll:false ,
-			detailTop:0
+			detailTop:0,
+			chapterList:[],
+			GroupList:[],
+			isBuy:false,
+			courseDetail:uni.getStorageSync("courseDetail"),
+			isWatch:false
 		};
 	},
 	onReady() {
@@ -61,8 +70,11 @@ export default {
 		// 	this.detailTop = data.top
 		// }).exec();
 	},
+
 	onLoad() {
 		this.getPageHeight();
+		this.getSectionList()
+		this.getGroupList()
 	},
 	onReachBottom() {
 		this.enableScroll=true
@@ -70,6 +82,49 @@ export default {
 	},
 	
 	methods: {
+		//点击观看事件
+		handelArticle(item){
+			if(this.isBuy || item.isFree){
+				uni.showToast({
+					title:"你购买了吗",
+					icon:"none"
+				})
+			}else{
+				this.isWatch=true
+			}
+		},
+		//立即购买事件
+		async changeBtn(){
+			let token = uni.getStorageInfoSync("token")
+			if(token){
+				try{
+					let res = await detailApi.getCourseIsBuyApi()
+					this.isBuy=res.data.isBuy
+				}catch(e){
+					//TODO handle the exception
+				}
+			}
+			console.log('点击购买');
+		},
+		//获取套餐数据
+		async getGroupList(){
+			try{
+				let res = await detailApi.getGroupListApi()
+				console.log(res);
+				this.GroupList = res.data
+			}catch(e){
+				//TODO handle the exception
+			}
+		},
+		//获取文章列表
+		async getSectionList(){
+			try{
+				let res = await detailApi.getSectionListApi()
+				this.chapterList = res.data
+			}catch(e){
+				//TODO handle the exception
+			}
+		},
 		handelSlide(event) {
 			console.log(event.detail.current);
 			this.index = event.detail.current;
@@ -116,7 +171,7 @@ export default {
 		height: 100%;
 		.list_info{
 			width: 100%;
-			height: 100%;
+			padding-bottom:180rpx;
 		}
 	}
 }
@@ -133,4 +188,14 @@ export default {
 	line-height: 80rpx;
 	color: #fff;
 }
+.mask{
+	.text{
+		text-align: center;
+		line-height: 400rpx;
+		color: #fff;
+		font-size: 35rpx;
+		
+	}
+}
+
 </style>

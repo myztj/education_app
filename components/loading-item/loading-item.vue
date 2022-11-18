@@ -8,7 +8,7 @@
 					<view class="info_time">1822年05月06日</view>
 				</view>
 			</view>
-			<view class="icon"><text class="iconfont icon-haoping2"></text></view>
+			<view :class="{icon:item.isGood}"><text class="iconfont icon-haoping2"></text></view>
 		</view>
 		<view class="loading-down">{{item.content}}。</view>
 		<view class="reply" v-if="item.children!=null">讲师回复：{{item.children.content}}</view>

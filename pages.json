@@ -118,9 +118,9 @@
         },
 		{
 			"path": "pages/course/course-details",
-			"navigationBarBackgroundColor": "#345DC2",
-			"navigationBarTextStyle": "white",
 			"style": {
+				"navigationBarBackgroundColor": "#345DC2",
+				"navigationBarTextStyle": "white",
 				"app-plus": {
 					"bounce": "none",
 					"scrollIndicator": "none",
